@@ -5,11 +5,10 @@
  */
 package br.edu.ifsul.controle;
 
-
 import br.edu.ifsul.dao.CatalogoDAO;
-import br.edu.ifsul.dao.LivrariaDAO;
+import br.edu.ifsul.dao.IdiomaDAO;
 import br.edu.ifsul.modelo.Catalogo;
-import br.edu.ifsul.modelo.Livraria;
+import br.edu.ifsul.modelo.Idioma;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -20,22 +19,23 @@ import javax.inject.Named;
  *
  * @author marco
  */
-@Named(value = "controleLivraria")
+
+@Named(value = "controleCatalogo")
 @ViewScoped
-public class ControleLivraria implements Serializable{
+public class ControleCatalogo implements Serializable{
     
     @EJB
-    private LivrariaDAO<Livraria> dao;    
-    private Livraria objeto;
+    private CatalogoDAO<Catalogo> dao;    
+    private Catalogo objeto;
     @EJB
-    private CatalogoDAO<Catalogo> daoCatalogo;
-    
+    private IdiomaDAO<Idioma> daoIdioma;
+     
     public String listar(){
-        return "/privado/livraria/listar?faces-redirect=true";
+        return "/privado/catalogo/listar?faces-redirect=true";
     }
     
     public void novo(){
-        objeto = new Livraria();
+        objeto = new Catalogo();
     }
     
     public void alterar(Object id){
@@ -69,30 +69,28 @@ public class ControleLivraria implements Serializable{
         }
     }
 
-    public LivrariaDAO<Livraria> getDao() {
+    public CatalogoDAO<Catalogo> getDao() {
         return dao;
     }
 
-    public void setDao(LivrariaDAO<Livraria> dao) {
+    public void setDao(CatalogoDAO<Catalogo> dao) {
         this.dao = dao;
     }
 
-    public Livraria getObjeto() {
+    public Catalogo getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(Livraria objeto) {
+    public void setObjeto(Catalogo objeto) {
         this.objeto = objeto;
     }
 
-    public CatalogoDAO<Catalogo> getDaoCatalogo() {
-        return daoCatalogo;
+    public IdiomaDAO getDaoIdioma() {
+        return daoIdioma;
     }
 
-    public void setDaoCatalogo(CatalogoDAO<Catalogo> daoCatalogo) {
-        this.daoCatalogo = daoCatalogo;
+    public void setDaoIdioma(IdiomaDAO daoIdioma) {
+        this.daoIdioma = daoIdioma;
     }
-
-    
     
 }

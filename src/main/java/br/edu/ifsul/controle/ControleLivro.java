@@ -5,7 +5,13 @@
  */
 package br.edu.ifsul.controle;
 
+import br.edu.ifsul.dao.CatalogoDAO;
+import br.edu.ifsul.dao.FormatoDAO;
+import br.edu.ifsul.dao.IdiomaDAO;
 import br.edu.ifsul.dao.LivroDAO;
+import br.edu.ifsul.modelo.Catalogo;
+import br.edu.ifsul.modelo.Formato;
+import br.edu.ifsul.modelo.Idioma;
 import br.edu.ifsul.modelo.Livro;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
@@ -24,7 +30,13 @@ public class ControleLivro implements Serializable{
     @EJB
     private LivroDAO<Livro> dao;    
     private Livro objeto;
-    
+    @EJB
+    private IdiomaDAO<Idioma> daoIdioma;
+    @EJB
+    private FormatoDAO<Formato> daoFormato;
+    @EJB
+    private CatalogoDAO<Catalogo> daoCatalogo;
+     
     public String listar(){
         return "/privado/livro/listar?faces-redirect=true";
     }
@@ -80,6 +92,13 @@ public class ControleLivro implements Serializable{
         this.objeto = objeto;
     }
 
+    public IdiomaDAO getDaoIdioma() {
+        return daoIdioma;
+    }
+
+    public void setDaoIdioma(IdiomaDAO daoIdioma) {
+        this.daoIdioma = daoIdioma;
+    }
     
     
 }

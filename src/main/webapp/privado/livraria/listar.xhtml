@@ -89,37 +89,9 @@
                     </p:column>
                 </p:dataTable>
             </h:form>
-
-            <p:dialog header="Edição" widgetVar="dlg" resizable="false"
-                      modal="true" width="50%" height="100%">
-                <h:form id="formEdicao" prependId="false">
-                    <p:growl/>
-                    <div align="center">
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="ID"/>
-                            <p:inputText validator="#{controleLivraria.objeto.id}"
-                                         size="5" readonly="true"/>
-                            <p:outputLabel value="Nome" for="txtNome"/>
-                            <p:inputText id="txtNome" value="#{controleLivraria.objeto.nome}"
-                                         size="50" maxlength="50"
-                                         placeholder="Obrigatório"/>
-                            <p:outputLabel value="Site" for="txtSite"/>
-                            <p:inputText id="txtSite" value="#{controleLivraria.objeto.site}"
-                                         size="200" maxlength="50"/>
-                        </p:panelGrid>
-                    </div>
-                    <p:panel>
-                        <div align="center">
-                            <p:commandButton value="Salvar"
-                                             icon="pi pi-save"
-                                             actionListener="#{controleLivraria.salvar()}"
-                                             update="formEdicao formListagem"
-                                             oncomplete="if(!args.validationFailed){PF('dlg').hide();}"/>
-                        </div>
-                    </p:panel>
-
-                </h:form>
-            </p:dialog>
+            
+            <ui:include src="formulario.xhtml"/>
+            
         </ui:define>
     </ui:composition>
 

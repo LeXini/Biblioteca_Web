@@ -5,8 +5,9 @@
  */
 package br.edu.ifsul.dao;
 
+
 import br.edu.ifsul.converters.ConverterOrdem;
-import br.edu.ifsul.modelo.Livraria;
+import br.edu.ifsul.modelo.Catalogo;
 import java.io.Serializable;
 import javax.ejb.Stateful;
 
@@ -14,17 +15,16 @@ import javax.ejb.Stateful;
  *
  * @author marco
  */
-
 @Stateful
-public class LivrariaDAO<TIPO>  extends DAOGenerico<Livraria> implements Serializable {
+public class CatalogoDAO<TIPO>  extends DAOGenerico<Catalogo> implements Serializable {
     
-    public LivrariaDAO(){
+    public CatalogoDAO(){
         super();
-        classePersistente = Livraria.class;
+        classePersistente = Catalogo.class;
         //definir as ordens possíveis
         listaOrdem.add(new Ordem("id", "ID", "="));
         listaOrdem.add(new Ordem("nome", "Nome", "like"));
-        listaOrdem.add(new Ordem("catalogo.nome", "Catalogo", "like"));
+        listaOrdem.add(new Ordem("descricao", "Descricao", "like"));
         
         //definir ordem inicial
         ordemAtual = listaOrdem.get(1);
@@ -33,5 +33,4 @@ public class LivrariaDAO<TIPO>  extends DAOGenerico<Livraria> implements Seriali
         converterOrdem = new ConverterOrdem();
         converterOrdem.setListaOrdem(listaOrdem);  
     }
-
 }
