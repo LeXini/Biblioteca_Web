@@ -66,24 +66,6 @@ and open the template in the editor.
                             <f:selectItems value="#{controleLivro.daoIdioma.listaTodos}"
                                            var="m" itemLabel="#{m.nome}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Formato" for="txtFormato"/>
-                        <p:selectOneMenu id="txtFormato" value="#{controleLivro.objeto.formato}"
-                                         filter="true" filterMatchMode="startWith">
-                            <f:selectItem itemLabel="Selecione um formato"
-                                          noSelectionOption="true"/>
-                            <f:converter binding="#{converterFormato}"/>
-                            <f:selectItems value="#{controleLivro.daoFormato.listaTodos}"
-                                           var="m" itemLabel="#{m.nome}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="Catalogo" for="txtCatalogo"/>
-                        <p:selectOneMenu id="txtCatalogo" value="#{controleLivro.objeto.catalogo}"
-                                         filter="true" filterMatchMode="starsWith">
-                            <f:selectItem noSelectionOption="true"
-                                          itemLabel="Selecione um Catalogo"/>
-                            <f:converter binding="#{converterCatalogo}"/>
-                            <f:selectItems value="#{controleLivro.daoCatalogo.listaTodos}"
-                                           var="cat" itemLabel="#{cat.nome}"/>
-                        </p:selectOneMenu>
                     </p:panelGrid>
                 </p:tab>
                 <p:tab title="Formato Livro">

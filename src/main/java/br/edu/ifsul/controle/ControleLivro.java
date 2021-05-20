@@ -90,14 +90,24 @@ public class ControleLivro implements Serializable{
 
     public void setObjeto(Livro objeto) {
         this.objeto = objeto;
-    }
-
-    public IdiomaDAO getDaoIdioma() {
+    }public IdiomaDAO getDaoIdioma() {
         return daoIdioma;
     }
 
-    public void setDaoIdioma(IdiomaDAO daoIdioma) {
-        this.daoIdioma = daoIdioma;
+    public CatalogoDAO<Catalogo> getDaoCatalogo() {
+        return daoCatalogo;
+    }
+
+    public void setDaoCatalogo(CatalogoDAO<Catalogo> daoCatalogo) {
+        this.daoCatalogo = daoCatalogo;
+    }
+
+    public FormatoDAO<Formato> getDaoFormato() {
+        return daoFormato;
+    }
+
+    public void setDaoFormato(FormatoDAO<Formato> daoFormato) {
+        this.daoFormato = daoFormato;
     }
     
     

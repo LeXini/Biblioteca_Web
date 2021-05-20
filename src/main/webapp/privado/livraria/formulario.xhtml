@@ -27,17 +27,6 @@ and open the template in the editor.
                         <p:outputLabel value="Site" for="txtSite"/>
                         <p:inputText id="txtSite" value="#{controleLivraria.objeto.site}"
                                      size="200" maxlength="50"/>
-                        <p:outputLabel value="Catalogo" for="txtCatalogo"/>
-                        <p:selectOneMenu value="#{controleLivraria.objeto.catalogo}"
-                                     id="selectTecnico"
-                                     filter="true"
-                                     filterMatchMode="starsWith">
-                            <f:selectItem noSelectionOption="true"
-                                          itemLabel="Selecione um Registro"/>
-                            <f:converter binding="#{converterCatalogo}"/>
-                            <f:selectItems value="#{controleLivraria.daoCatalogo.listaTodos}"
-                                           var="cat" itemLabel="#{cat.nome}"/>
-                        </p:selectOneMenu>
                     </p:panelGrid>
                 </p:tab>
                 <p:tab title="Site">
