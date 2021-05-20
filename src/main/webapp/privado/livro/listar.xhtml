@@ -9,6 +9,7 @@
         <ui:define name="titulo">Manutenção de Livros</ui:define>
         <ui:define name="conteudo">
             <h:form id="formListagem" prependId="false">
+                <br/>
                 <p:growl/>
                 <p:commandButton value="Novo"
                                  actionListener="#{controleLivro.novo()}"
@@ -121,43 +122,54 @@
                     <div align="center">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="ISBN"/>
-                            <p:inputText validator="#{controleLivro.objeto.ISBN}"
-                                         size="5" readonly="true"/>
+                            <p:inputText value="#{controleLivro.objeto.ISBN}"
+                                         size="10" placeholder="Obrigatório" maxlength="10"/>
                             <p:outputLabel value="Titulo" for="txtTitulo"/>
                             <p:inputText id="txtTitulo" value="#{controleLivro.objeto.titulo}"
-                                         size="50" maxlength="50"
+                                         size="30" maxlength="50"
                                          placeholder="Obrigatório"/>
                             <p:outputLabel value="Resumo" for="txtResumo"/>
                             <p:inputText id="txtResumo" value="#{controleLivro.objeto.resumo}"
-                                         size="200" maxlength="50"/>
+                                         size="30" maxlength="50"/>
                             <p:outputLabel value="Editora" for="txtEditora"/>
                             <p:inputText id="txtEditora" value="#{controleLivro.objeto.editora}"
-                                         size="50" maxlength="50"
+                                         size="20" maxlength="50"
                                          placeholder="Obrigatório"/>
                             <p:outputLabel value="Data Publicação" for="txtDataPublicacao"/>
-                            <p:inputText id="txtDataPublicacao" value="#{controleLivro.objeto.dataPublicacao}"
-                                         size="200" maxlength="50">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </p:inputText>
+                            <p:calendar id="txtDataPublicacao" value="#{controleLivro.objeto.dataPublicacao}"
+                                         mask="true" size="10" navigator="true"
+                                         pattern = "dd/MM/yyyy">
+                                <f:converter converterId="converterCalendar"/>
+                            </p:calendar>
                             <p:outputLabel value="Codigo Barras" for="txtCodigoBarras"/>
                             <p:inputText id="txtCodigoBarras" value="#{controleLivro.objeto.codigoBarras}"
-                                         size="50" maxlength="50"
+                                         size="30" maxlength="50"
                                          placeholder="Obrigatório"/>
                             <p:outputLabel value="Numero Paginas" for="txtNumeroPaginas"/>
                             <p:inputText id="txtNumeroPaginas" value="#{controleLivro.objeto.numeroPaginas}"
-                                         size="200" maxlength="50"/>
+                                         size="30" maxlength="50"/>
                             <p:outputLabel value="Ativo" for="txtAtivo"/>
                             <p:inputText id="txtAtivo" value="#{controleLivro.objeto.ativo}"
                                          size="50" maxlength="50"
                                          placeholder="Obrigatório"/>
                             <p:outputLabel value="Data Cadastro" for="txtDataCadastro"/>
-                            <p:inputText id="txtDataCadastro" value="#{controleLivro.objeto.dataCadastro}"
-                                         size="200" maxlength="50">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </p:inputText>
+                            <p:calendar id="txtDataCadastro" value="#{controleLivro.objeto.dataCadastro}"
+                                         mask="true" size="10" navigator="true"
+                                         pattern = "dd/MM/yyyy">
+                                <f:converter converterId="converterCalendar"/>
+                            </p:calendar>
                             <p:outputLabel value="Valor" for="txtValor"/>
                             <p:inputText id="txtValor" value="#{controleLivro.objeto.valor}"
-                                         size="200" maxlength="50"/>
+                                         size="30" maxlength="50"/>
+                            <p:outputLabel value="Idioma" for="txtIdioma"/>
+                            <p:selectOneMenu id="txtIdioma" value="#{controleLivro.objeto.idioma}"
+                                             filter="true" filterMatchMode="startWith">
+                                <f:selectItem itemLabel="Selecione um Idioma"
+                                              noSelectionOption="true"/>
+                                <f:converter binding="#{converterIdioma}"/>
+                                <f:selectItems value="#{controleLivro.daoIdioma.listaTodos}"
+                                               var="m" itemLabel="#{m.nome}"/>
+                            </p:selectOneMenu>
                         </p:panelGrid>
                     </div>
                     <p:panel>
