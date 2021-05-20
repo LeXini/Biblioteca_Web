@@ -24,7 +24,7 @@ public class Ordem implements Serializable{
 
     @Override
     public String toString() {
-        return "Ordem{" + "label=" + label + '}';
+        return label;
     }
     
     public String getAtributo() {

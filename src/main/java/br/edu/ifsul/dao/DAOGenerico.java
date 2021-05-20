@@ -31,7 +31,7 @@ public class DAOGenerico<TIPO> implements Serializable {
         String where = "";
         filtro = filtro.replaceAll("[';-]", "");
         if(filtro.length() > 0){
-            switch(ordemAtual.getAtributo()){
+            switch(ordemAtual.getOperador()){
                 case "=" :
                     if(ordemAtual.getAtributo().equals("id")){
                         try{
@@ -42,8 +42,8 @@ public class DAOGenerico<TIPO> implements Serializable {
                     }
                     where += " where " + ordemAtual.getAtributo() + " = '" + filtro + "' ";
                     break;
-                case "like:":
-                    where += "where upper(" + ordemAtual.getAtributo() + ") like '" +
+                case "like":
+                    where += " where upper(" + ordemAtual.getAtributo() + ") like '" +
                             filtro.toUpperCase() + "%' ";
                     break;
             }
@@ -94,7 +94,7 @@ public class DAOGenerico<TIPO> implements Serializable {
     }
     
     public List<TIPO> getListaTodos() {
-        String jpql = "from " + classePersistente.getSimpleName();
+        String jpql = "from " + classePersistente.getSimpleName() + " order by " + ordemAtual.getAtributo();
         return em.createQuery(jpql).getResultList();
     }
     

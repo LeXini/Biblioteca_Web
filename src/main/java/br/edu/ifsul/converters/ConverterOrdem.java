@@ -25,7 +25,7 @@ public class ConverterOrdem implements Serializable, Converter{
     private List<Ordem> listaOrdem;
     
     @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String string) {
+    public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         for(Ordem o: listaOrdem){
             if(o.getAtributo().equals(string))
                 return o;
@@ -34,7 +34,7 @@ public class ConverterOrdem implements Serializable, Converter{
     }
 
     @Override
-    public String getAsString(FacesContext context, UIComponent component, Object t) {
+    public String getAsString(FacesContext fc, UIComponent uic, Object t) {
         if(t == null)
             return null;
         return t.toString();
